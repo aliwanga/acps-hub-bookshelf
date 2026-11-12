@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ACPS-HUB BOOKSHELF</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="hero">
+  <div class="hero-text">
+    <h1>ACPS-HUB BOOKSHELF</h1>
+    <p class="lead">Celebrating our readers, from the first chapter to graduation day.</p>
+    <p class="sub">Search Open Library, Project Gutenberg, the Internet Archive and Google Books in one place.</p>
+  </div>
+
+  <svg class="scene" viewBox="0 0 640 250" role="img" aria-label="Three graduates in gowns and caps celebrating with books, with caps tossed in the air">
+    <defs>
+      <g id="cap">
+        <polygon points="-26,0 0,-11 26,0 0,11" fill="var(--cap)"/>
+        <path d="M-13 4 V14 Q0 20 13 14 V4 Q0 10 -13 4Z" fill="var(--cap)"/>
+        <path d="M0 0 L22 3 V16" stroke="var(--gold)" stroke-width="2" fill="none"/>
+        <circle cx="22" cy="18" r="3" fill="var(--gold)"/>
+      </g>
+    </defs>
+
+    <!-- confetti -->
+    <g class="confetti">
+      <circle cx="70" cy="40" r="4" fill="var(--gold)"/><circle cx="150" cy="22" r="3" fill="#fff"/>
+      <rect x="240" y="30" width="8" height="8" fill="#7fc8f8" transform="rotate(25 244 34)"/>
+      <circle cx="330" cy="18" r="4" fill="var(--gold)"/><circle cx="430" cy="34" r="3" fill="#fff"/>
+      <rect x="520" y="24" width="8" height="8" fill="var(--gold)" transform="rotate(-20 524 28)"/>
+      <circle cx="590" cy="60" r="4" fill="#7fc8f8"/><rect x="40" y="96" width="7" height="7" fill="#fff" transform="rotate(40 43 99)"/>
+    </g>
+
+    <!-- tossed caps -->
+    <g class="toss t1"><use href="#cap" x="205" y="62"/></g>
+    <g class="toss t2"><use href="#cap" x="430" y="48" transform="rotate(-14 430 48)"/></g>
+    <g class="toss t3"><use href="#cap" x="545" y="96" transform="rotate(18 545 96)"/></g>
+
+    <!-- bookshelf line -->
+    <rect x="0" y="228" width="640" height="8" fill="var(--gold)"/>
+
+    <!-- stack of books -->
+    <g>
+      <rect x="20" y="208" width="70" height="20" rx="2" fill="#b3402f"/>
+      <rect x="28" y="190" width="62" height="18" rx="2" fill="#2f7f6f"/>
+      <rect x="16" y="172" width="66" height="18" rx="2" fill="#e0a526"/>
+      <rect x="24" y="156" width="54" height="16" rx="2" fill="#5b7fd1"/>
+    </g>
+
+    <!-- graduate 1: holding open book -->
+    <g transform="translate(205 228)">
+      <path d="M-30 0 L-20 -78 Q0 -88 20 -78 L30 0Z" fill="var(--gown)"/>
+      <path d="M-4 -80 L4 -80 L8 0 L-8 0Z" fill="var(--gold)" opacity=".9"/>
+      <circle cx="0" cy="-98" r="14" fill="#8d5a3b"/>
+      <g transform="translate(0 -113)"><use href="#cap"/></g>
+      <path d="M-22 -50 L-4 -44 L-4 -28 L-22 -34Z M22 -50 L4 -44 L4 -28 L22 -34Z" fill="#fff" stroke="var(--gown)"/>
+    </g>
+
+    <!-- graduate 2: raised scroll -->
+    <g transform="translate(325 228)">
+      <path d="M-30 0 L-20 -80 Q0 -90 20 -80 L30 0Z" fill="var(--gown)"/>
+      <path d="M-4 -82 L4 -82 L8 0 L-8 0Z" fill="var(--gold)" opacity=".9"/>
+      <circle cx="0" cy="-100" r="14" fill="#f0c9a0"/>
+      <g transform="translate(0 -115)"><use href="#cap"/></g>
+      <path d="M20 -74 L44 -112" stroke="var(--gown)" stroke-width="9" stroke-linecap="round"/>
+      <rect x="38" y="-146" width="12" height="40" rx="5" fill="#f7efd8" stroke="var(--gold)" transform="rotate(18 44 -126)"/>
+    </g>
+
+    <!-- graduate 3: hugging books -->
+    <g transform="translate(445 228)">
+      <path d="M-30 0 L-20 -76 Q0 -86 20 -76 L30 0Z" fill="var(--gown)"/>
+      <path d="M-4 -78 L4 -78 L8 0 L-8 0Z" fill="var(--gold)" opacity=".9"/>
+      <circle cx="0" cy="-96" r="14" fill="#5c3a26"/>
+      <g transform="translate(0 -111)"><use href="#cap"/></g>
+      <rect x="-24" y="-58" width="48" height="12" rx="2" fill="#b3402f"/>
+      <rect x="-22" y="-70" width="44" height="12" rx="2" fill="#2f7f6f"/>
+    </g>
+
+    <!-- small reader sitting with book -->
+    <g transform="translate(560 228)">
+      <path d="M-24 0 L-16 -60 Q0 -68 16 -60 L24 0Z" fill="#5b7fd1"/>
+      <circle cx="0" cy="-76" r="12" fill="#c68b5d"/>
+      <path d="M-20 -40 L0 -34 L20 -40 V-22 L0 -16 L-20 -22Z" fill="#fff" stroke="var(--gown)"/>
+    </g>
+  </svg>
+</header>
+
+<section class="search-wrap">
+  <form id="f" role="search">
+    <input id="q" type="search" placeholder="Find your next book: title, author or subject" aria-label="Search books" required>
+    <button class="go" type="submit">Search books</button>
+  </form>
+  <div class="filters">
+    <label><input type="checkbox" value="gutenberg" checked> Project Gutenberg</label>
+    <label><input type="checkbox" value="openlibrary" checked> Open Library</label>
+    <label><input type="checkbox" value="archive" checked> Internet Archive</label>
+    <label><input type="checkbox" value="google" checked> Google Books</label>
+    <label><input type="checkbox" id="freeOnly"> Free to read only</label>
+  </div>
+</section>
+
+<main>
+  <div id="status">Type a title or author to begin. Every graduate started as a reader.</div>
+  <div id="results"></div>
+  <button class="more" id="more" hidden>Load more</button>
+</main>
+
+<footer>
+  <svg class="cap-mark" viewBox="-30 -16 60 40" aria-hidden="true"><use href="#cap"/></svg>
+  <p class="credit"><strong>Developed by Allan</strong><br>
+  Building smart solutions for better communities through technology and innovation</p>
+  <p class="note">Results come directly from each source’s public API. Only legally available copies are linked: public domain, openly licensed, library lending, or publisher previews.</p>
+</footer>
+
+<div class="watermark" aria-hidden="true">Developed by Allan</div>
+<script src="js/app.js"></script>
+</body>
+</html>
