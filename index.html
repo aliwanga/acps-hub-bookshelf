@@ -4,14 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ACPS-HUB BOOKSHELF</title>
+<meta name="description" content="ACPS-HUB BOOKSHELF: search free and legal books from seven open libraries in one place.">
+<meta name="theme-color" content="#0b1f3a">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="topbar">
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-tab="search" role="tab" aria-selected="true">Discover</button>
+    <button class="tab" data-tab="shelf" role="tab" aria-selected="false">My Shelf <span id="shelfCount" class="count">0</span></button>
+  </div>
+  <button id="theme" class="icon-btn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">&#9790;</button>
+</div>
 <header class="hero">
   <div class="hero-text">
     <h1>ACPS-HUB BOOKSHELF</h1>
     <p class="lead">Celebrating our readers, from the first chapter to graduation day.</p>
-    <p class="sub">Search Open Library, Project Gutenberg, the Internet Archive and Google Books in one place.</p>
+    <p class="sub">Search seven open libraries in one place: Project Gutenberg, Open Library, Internet Archive, Google Books, Wikibooks, Wikisource and Crossref.</p>
   </div>
 
   <svg class="scene" viewBox="0 0 640 250" role="img" aria-label="Three graduates in gowns and caps celebrating with books, with caps tossed in the air">
@@ -87,32 +96,75 @@
   </svg>
 </header>
 
+<div id="panel-search">
 <section class="search-wrap">
   <form id="f" role="search">
-    <input id="q" type="search" placeholder="Find your next book: title, author or subject" aria-label="Search books" required>
+    <input id="q" type="search" placeholder="Find your next book: title, author or subject" aria-label="Search books" autocomplete="off" required>
     <button class="go" type="submit">Search books</button>
+    <button class="ghost" id="surprise" type="button">Surprise me</button>
   </form>
-  <div class="filters">
-    <label><input type="checkbox" value="gutenberg" checked> Project Gutenberg</label>
-    <label><input type="checkbox" value="openlibrary" checked> Open Library</label>
-    <label><input type="checkbox" value="archive" checked> Internet Archive</label>
-    <label><input type="checkbox" value="google" checked> Google Books</label>
-    <label><input type="checkbox" id="freeOnly"> Free to read only</label>
-  </div>
+  <div class="chips" id="subjects" aria-label="Browse by subject"></div>
+  <div class="chips recent" id="recent" hidden></div>
+  <details class="filters-box" open>
+    <summary>Sources &amp; filters</summary>
+    <div class="filters" id="sources"></div>
+    <div class="filters-row">
+      <label><input type="checkbox" id="freeOnly"> Free to read only</label>
+      <label>Sort
+        <select id="sort">
+          <option value="relevance">Best match</option>
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="title">Title A to Z</option>
+        </select>
+      </label>
+      <label>Language
+        <select id="lang">
+          <option value="">Any</option>
+          <option value="en">English</option>
+          <option value="sw">Kiswahili</option>
+          <option value="fr">French</option>
+          <option value="es">Spanish</option>
+          <option value="de">German</option>
+        </select>
+      </label>
+    </div>
+  </details>
 </section>
 
 <main>
+  <div id="sourceStatus" class="source-status" aria-live="polite"></div>
   <div id="status">Type a title or author to begin. Every graduate started as a reader.</div>
   <div id="results"></div>
   <button class="more" id="more" hidden>Load more</button>
 </main>
+</div>
+
+<section id="panel-shelf" class="shelf" hidden>
+  <div class="shelf-head">
+    <div>
+      <h2>My Shelf</h2>
+      <p id="shelfStats" class="muted">Save books to build your reading list.</p>
+    </div>
+    <div class="shelf-actions">
+      <button class="ghost" id="exportCsv" type="button">Export CSV</button>
+      <button class="ghost" id="exportJson" type="button">Export JSON</button>
+      <button class="ghost danger" id="clearShelf" type="button">Clear</button>
+    </div>
+  </div>
+  <div id="shelfList"></div>
+</section>
 
 <footer>
   <svg class="cap-mark" viewBox="-30 -16 60 40" aria-hidden="true"><use href="#cap"/></svg>
   <p class="credit"><strong>Developed by Allan</strong><br>
   Building smart solutions for better communities through technology and innovation</p>
-  <p class="note">Results come directly from each source’s public API. Only legally available copies are linked: public domain, openly licensed, library lending, or publisher previews.</p>
+  <p class="note">Results come directly from each source&rsquo;s public API. Only legally available copies are linked: public domain, openly licensed, library lending, or publisher previews.</p>
+  <p class="note">&copy; 2026 ACPS HUB. All rights reserved.</p>
 </footer>
+
+<dialog id="modal" aria-label="Book details"></dialog>
+<div id="toast" class="toast" role="status"></div>
 
 <div class="watermark" aria-hidden="true">Developed by Allan</div>
 <script src="js/app.js"></script>
