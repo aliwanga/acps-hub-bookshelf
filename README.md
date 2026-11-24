@@ -8,9 +8,6 @@ Developed by Allan. Building smart solutions for better communities through tech
 ## Run locally
 Open `index.html` in a browser, or run `python3 -m http.server` and visit http://localhost:8000.
 
-## Deploy with GitHub Pages
-Push to GitHub, then go to Settings > Pages and choose the `main` branch, root folder.
-
 ## Structure
 - `index.html` page markup
 - `css/style.css` styles
